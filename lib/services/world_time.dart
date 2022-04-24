@@ -9,6 +9,7 @@ class WorldTime {
   late String time; // time in that location
   late String flag; // url to asset flag icon
   late String url; // location url for api endpoint
+  late bool isDay; //true or false if daytime or not
 
   WorldTime({required this.location, required this.flag, required this.url});
 
@@ -34,6 +35,7 @@ class WorldTime {
       //print(now);
 
       //set time property
+      isDay = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     }catch(e) {
       print(e);
